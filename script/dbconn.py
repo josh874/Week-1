@@ -10,3 +10,9 @@ def db_connection_psycopg():
                               host="localhost",
                               port="5432")
     return pgconn
+
+# read function to the telecom data
+def db_read_table_psycopg(pgconn, table_name):
+    sql = f'SELECT * FROM {table_name}'
+    df = sqlio.read_sql_query(sql,pgconn)
+    return df
